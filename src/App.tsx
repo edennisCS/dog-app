@@ -38,6 +38,8 @@ export default function App() {
         ease: "power1.inOut",
       });
     });
+
+    
   }, []);
 
   return (
