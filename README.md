@@ -1,5 +1,7 @@
 # Dog Walk
 
+![My Demo](public/dog.gif)
+
 ## About
 Web Page Test where dog goes for a walk across the screen, can click to change pose and activate bark.
 
