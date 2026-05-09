@@ -5,6 +5,8 @@
 ## About
 Web Page Test where dog goes for a walk across the screen, can click to change pose and activate bark.
 
+try it at https://dog-app-omega.vercel.app/
+
 ## GSAP + Three.js
 Synchronizing two different rendering engines: the DOM (SVG) and WebGL (Three.js). Using gsap.fromTo, the dog's position is animated along the Z-axis
 
