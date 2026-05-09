@@ -1,73 +1,23 @@
-# React + TypeScript + Vite
+# Dog Walk
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## About
+Web Page Test where dog goes for a walk across the screen, can click to change pose and activate bark.
 
-Currently, two official plugins are available:
+## GSAP + Three.js
+Synchronizing two different rendering engines: the DOM (SVG) and WebGL (Three.js). Using gsap.fromTo, the dog's position is animated along the Z-axis
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
+- React: Component-based UI structure.
 
-## React Compiler
+- Three.js / React-Three-Fiber: WebGL rendering engine.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React-Three-Drei: Helpers for GLTF loading and Contact Shadows.
 
-## Expanding the ESLint configuration
+- GSAP (GreenSock): Movement of features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- SVG: Scalable, lightweight vector graphics for the background environment.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Credits
+Sound Effect by <a href="https://pixabay.com/users/u_5wgfa0ekjt-41084060/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=179915">u_5wgfa0ekjt</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=179915">Pixabay</a>
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Model by stylo0 on <a href="https://sketchfab.com/3d-models/dog-415a0951b0d148c79ff6277b3f527760"> SketchFab </a>
