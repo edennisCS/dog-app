@@ -14,49 +14,58 @@ export function Dog() {
   const { scene, animations } = useGLTF('/dog.glb') as GLTFResult
   const { actions, names } = useAnimations(animations, group)
   
-  // State to track which animation is active
   const [isPoseFive, setIsPoseFive] = useState(false)
 
+  // Sound function
+  const playBark = () => {
+    const audio = new Audio('/bark.mp3')
+    audio.volume = 0.4
+    audio.playbackRate = 0.9 + Math.random() * 0.2
+    audio.play().catch(() => {}) // Catch prevents errors if audio isn't found
+  }
+
+  // Animation Toggle Logic
   useEffect(() => {
-    // Determine which clips to use
-    // Assuming names[4] is the walk and names[5] is the click-target
     const walkAction = actions[names[4]]
     const poseAction = actions[names[5]]
 
     if (!walkAction || !poseAction) return
 
     if (isPoseFive) {
-      // Transition to Pose 5
       walkAction.fadeOut(0.5)
       poseAction.reset().fadeIn(0.5).play()
     } else {
-      // Transition back to Walk (Names[4])
       poseAction.fadeOut(0.5)
       walkAction.reset().fadeIn(0.5).play()
     }
   }, [isPoseFive, actions, names])
 
-  // Initial GSAP movement remains the same
+  // Movement Logic - Added [actions] as a dependency to ensure it loads
   useEffect(() => {
-    gsap.fromTo(group.current.position, 
-      { z: 5 }, 
-      { 
-        z: -5, 
-        duration: 6, 
-        repeat: -1, 
-        ease: "none",
-      }
-    )
-  }, [])
+    if (group.current) {
+      gsap.fromTo(group.current.position, 
+        { z: 5 }, 
+        { 
+          z: -5, 
+          duration: 6, 
+          repeat: -1, 
+          ease: "none",
+        }
+      )
+    }
+  }, [actions]) // This ensures GSAP waits for the model to be ready
 
   return (
     <group 
-      // Toggle state when the user clicks the dog
       onClick={(e) => {
-        e.stopPropagation() // Prevents clicking through the dog
+        e.stopPropagation()
+        playBark() // Trigger bark on click
         setIsPoseFive(!isPoseFive)
       }}
     >
+      {/* Added a light here to ensure the dog isn't black/unloaded looking */}
+      <ambientLight intensity={0.5} />
+      
       <primitive 
         ref={group} 
         object={scene} 
