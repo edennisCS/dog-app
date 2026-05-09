@@ -36,8 +36,8 @@ export function Dog() {
     <primitive 
       ref={group} 
       object={scene} 
-      scale={2.5} 
-      position={[0, -1, 5]} 
+      scale={1.5} 
+      position={[0, -1.3, 5]} 
       rotation={[0, 0, 0]} 
     />
   )
